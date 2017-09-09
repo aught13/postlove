@@ -47,7 +47,7 @@ services:
             - %core.root_path%
             - %core.php_ext%
             - %tables.anavaro.postlove%
-    notification.type.postlove:
+    anavaro.postlove.notification.type.postlove:
         class: anavaro\postlove\notification\postlove
         shared : false # shared MUST be false for this to work!
         arguments:
