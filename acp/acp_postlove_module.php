@@ -69,7 +69,7 @@ class acp_postlove_module
 					$sql = 'DELETE FROM ' . $table_prefix . 'posts_likes WHERE ' . $db->sql_in_set('post_id', $delete_post_likes);
 					$db->sql_query($sql);
 					$deleted_post_likes = $db->sql_affectedrows();
-					var_dump($deleted_post_likes . ' post likes deleted');
+					//var_dump($deleted_post_likes . ' post likes deleted');
 				}
 				$sql_ary = array(
 					'SELECT'	=> 'pl.user_id as user_id',
@@ -95,7 +95,7 @@ class acp_postlove_module
 					$sql = 'DELETE FROM ' . $table_prefix . 'posts_likes WHERE ' . $db->sql_in_set('user_id', $delete_user_likes);
 					$db->sql_query($sql);
 					$deleted_user_likes = $db->sql_affectedrows();
-					var_dump($deleted_user_likes . ' user likes deleted');
+					//var_dump($deleted_user_likes . ' user likes deleted');
 				}
 			}
 			else
