@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/aught13/postlove.svg?branch=1.2.x)](https://travis-ci.org/aught13/postlove) [![Coverage Status](https://coveralls.io/repos/github/aught13/postlove/badge.svg?branch=1.2.x)](https://coveralls.io/github/aught13/postlove?branch=1.2.x)
 
-Post Love for phpBB 3.2
+Post Love - Aught13 Fork for phpBB 3.2
 ==========
 
 Description:
