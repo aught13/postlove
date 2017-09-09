@@ -24,7 +24,7 @@
 	"extra": {
 		"display-name": "phpBB 3.2 Post Love",
 		"soft-require": {
-			"phpbb/phpbb": ">=3.2.*@dev"
+			"phpbb/phpbb": ">=3.2.@dev"
 		},
 		"version-check": {
 			"host": "lab.anavaro.com",
