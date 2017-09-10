@@ -1,3 +1,5 @@
+sudo: required
+dist: precise
 language: php
 
 matrix:
@@ -35,7 +37,6 @@ env:
 
 branches:
   only:
-    - master
     - 1.2.x
     - /^[0-9].*$/
 
