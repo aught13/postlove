@@ -11,8 +11,10 @@
 			"name": "Stanislav Atanasov",
 			"email": "lucifer@anavaro.com",
 			"homepage": "http://anavaro.com",
-			"role": "Lead Developer",
-			"name2": "Patrick Foltz",
+			"role": "Lead Developer"
+		},
+		{
+			"name": "Patrick Foltz",
 			"email": "historain@racerhistory.com",
 			"homepage": "http://racerhistory.com",
 			"role": "Sub Developer"
