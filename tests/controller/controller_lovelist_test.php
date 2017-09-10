@@ -73,7 +73,7 @@ class controller_lovelist_test extends \phpbb_database_test_case
 
 		$this->auth = $this->getMock('\phpbb\auth\auth');
 
-		$this->user_loader = new \phpbb\user_loader($this->db, $phpbb_root_path, $phpEx, 'phpbb_users');
+		$this->user_loader = new \phpbb\user_loader($this->db_tools, $phpbb_root_path, $phpEx, 'phpbb_users');
 		// Mock the template
 		$this->template = $this->getMockBuilder('\phpbb\template\template')
 			->getMock();

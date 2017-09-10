@@ -79,7 +79,7 @@ class main_event extends \phpbb_database_test_case
 		$this->listener = new \aught13\postlove\event\main_listener(
 			$this->auth,
 			$this->config,
-			$this->db,
+			$this->db_tools,
 			$this->template,
 			$this->user,
 			$this->controller_helper,
