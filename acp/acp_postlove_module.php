@@ -11,7 +11,7 @@
 * @ignore
 */
 
-namespace anavaro\postlove\acp;
+namespace aught13\postlove\acp;
 
 /**
 * @package acp
@@ -26,7 +26,7 @@ class acp_postlove_module
 
 		$language = $phpbb_container->get('language');
 		//Define extension path (we will need it)
-		$ext_path =  $phpbb_root_path . 'ext/anavaro/postlove/';
+		$ext_path =  $phpbb_root_path . 'ext/aught13/postlove/';
 
 		$this->tpl_name = 'acp_postlove';
 		$this->page_title = 'ACP_POSTLOVE';
@@ -69,7 +69,7 @@ class acp_postlove_module
 					$sql = 'DELETE FROM ' . $table_prefix . 'posts_likes WHERE ' . $db->sql_in_set('post_id', $delete_post_likes);
 					$db->sql_query($sql);
 					$deleted_post_likes = $db->sql_affectedrows();
-					//var_dump($deleted_post_likes . ' post likes deleted');
+					var_dump($deleted_post_likes . ' post likes deleted');
 				}
 				$sql_ary = array(
 					'SELECT'	=> 'pl.user_id as user_id',
@@ -95,7 +95,7 @@ class acp_postlove_module
 					$sql = 'DELETE FROM ' . $table_prefix . 'posts_likes WHERE ' . $db->sql_in_set('user_id', $delete_user_likes);
 					$db->sql_query($sql);
 					$deleted_user_likes = $db->sql_affectedrows();
-					//var_dump($deleted_user_likes . ' user likes deleted');
+					var_dump($deleted_user_likes . ' user likes deleted');
 				}
 			}
 			else

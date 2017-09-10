@@ -9,7 +9,7 @@
 *
 */
 
-namespace anavaro\postlove\event;
+namespace aught13\postlove\event;
 
 /**
 * Event listener
@@ -46,9 +46,7 @@ class main_listener implements EventSubscriberInterface
 	* @param string			$root_path	phpBB root path
 	* @param string			$php_ext	phpEx
 	*/
-	public function __construct(\phpbb\auth\auth $auth, \phpbb\config\config $config, \phpbb\db\driver\driver_interface $db, \phpbb\template\template $template, \phpbb\user $user,
-	\phpbb\controller\helper $helper,
-	$loves_table)
+	public function __construct(\phpbb\auth\auth $auth, \phpbb\config\config $config, \phpbb\db\driver\driver_interface $db, \phpbb\template\template $template, \phpbb\user $user,	\phpbb\controller\helper $helper, $likes_table)
 	{
 		$this->auth = $auth;
 		$this->config = $config;
@@ -56,12 +54,12 @@ class main_listener implements EventSubscriberInterface
 		$this->template = $template;
 		$this->user = $user;
 		$this->helper = $helper;
-		$this->loves_table = $loves_table;
+		$this->likes_table = $likes_table;
 	}
 
 	public function load_language_on_setup($event)
 	{
-		$this->user->add_lang_ext('anavaro/postlove', 'postlove');
+		$this->user->add_lang_ext('aught13/postlove', 'postlove');
 	}
 
 	public function modify_post_row($event)
@@ -74,7 +72,7 @@ class main_listener implements EventSubscriberInterface
 			'SELECT'	=>	'pl.user_id as user_id, u.username as username',
 			'FROM'	=> array(
 				USERS_TABLE	=> 'u',
-				$this->loves_table	=> 'pl'
+				$this->likes_table	=> 'pl'
 			),
 			'WHERE'	=> 'u.user_id = pl.user_id AND post_id = ' . $event['row']['post_id'],
 			'ORDER_BY'	=> 'pl.timestamp ASC',
@@ -137,7 +135,7 @@ class main_listener implements EventSubscriberInterface
 		//Test if we are shoung likes given!
 		if ($this->config['postlove_show_likes'])
 		{
-			$sql = 'SELECT COUNT(post_id) as count FROM ' .$this->loves_table . ' WHERE user_id = ' . $event['row']['user_id'];
+			$sql = 'SELECT COUNT(post_id) as count FROM ' .$this->likes_table . ' WHERE user_id = ' . $event['row']['user_id'];
 			$result = $this->db->sql_query($sql);
 			$count = (int) $this->db->sql_fetchfield('count');
 			$this->db->sql_freeresult($result);
@@ -150,7 +148,7 @@ class main_listener implements EventSubscriberInterface
 			$sql_array = array(
 				'SELECT'	=> 'COUNT(pl.post_id) as count',
 				'FROM'	=> array(
-					$this->loves_table	=> 'pl',
+					$this->likes_table	=> 'pl',
 					POSTS_TABLE	=> 'p'
 				),
 				'WHERE'	=> 'pl.post_id = p.post_id AND p.poster_id = ' . $event['row']['user_id'],
@@ -176,7 +174,7 @@ class main_listener implements EventSubscriberInterface
 	*/
 	public function clean_posts_after($event)
 	{
-		$sql = 'DELETE FROM ' . $this->loves_table . ' WHERE ' . $this->db->sql_in_set('post_id', $event['post_ids']);
+		$sql = 'DELETE FROM ' . $this->likes_table . ' WHERE ' . $this->db->sql_in_set('post_id', $event['post_ids']);
 		$this->db->sql_query($sql);
 	}
 
@@ -186,7 +184,7 @@ class main_listener implements EventSubscriberInterface
 	*/
 	public function clean_users_after($event)
 	{
-		$sql = 'DELETE FROM ' . $this->loves_table . ' WHERE ' . $this->db->sql_in_set('user_id', $event['user_ids']);
+		$sql = 'DELETE FROM ' . $this->likes_table . ' WHERE ' . $this->db->sql_in_set('user_id', $event['user_ids']);
 		$this->db->sql_query($sql);
 	}
 }

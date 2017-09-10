@@ -1,8 +1,8 @@
 parameters:
-    tables.anavaro.postlove: %core.table_prefix%posts_likes
+    tables.aught13.postlove: %core.table_prefix%posts_likes
 services:
-    anavaro.postlove.listener:
-        class: anavaro\postlove\event\main_listener
+    aught13.postlove.listener:
+        class: aught13\postlove\event\main_listener
         arguments:
             - @auth
             - @config
@@ -10,19 +10,19 @@ services:
             - @template
             - @user
             - @controller.helper
-            - %tables.anavaro.postlove%
+            - %tables.aught13.postlove%
         tags:
             - { name: event.listener }
-    anavaro.postlove.ajaxify:
-        class: anavaro\postlove\controller\ajaxify
+    aught13.postlove.ajaxify:
+        class: aught13\postlove\controller\ajaxify
         arguments:
             - @config
             - @dbal.conn
             - @user
-            - @anavaro.postlove.notifyhelper
-            - %tables.anavaro.postlove%
-    anavaro.postlove.lovelist:
-        class: anavaro\postlove\controller\lovelist
+            - @aught13.postlove.notifyhelper
+            - %tables.aught13.postlove%
+    aught13.postlove.lovelist:
+        class: aught13\postlove\controller\lovelist
         arguments:
             - @user
             - @language
@@ -33,10 +33,10 @@ services:
             - @template
             - @pagination
             - @request
-            - %tables.anavaro.postlove%
+            - %tables.aught13.postlove%
             - %core.root_path%
-    anavaro.postlove.notifyhelper:
-        class: anavaro\postlove\controller\notifyhelper
+    aught13.postlove.notifyhelper:
+        class: aught13\postlove\controller\notifyhelper
         arguments:
             - @config
             - @dbal.conn
@@ -46,9 +46,8 @@ services:
             - @service_container
             - %core.root_path%
             - %core.php_ext%
-            - %tables.anavaro.postlove%
-    anavaro.postlove.notification.type.postlove:
-        class: anavaro\postlove\notification\postlove
+    notification.type.postlove:
+        class: aught13\postlove\notification\postlove
         shared : false # shared MUST be false for this to work!
         arguments:
             - @user_loader

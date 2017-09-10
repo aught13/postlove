@@ -25,8 +25,8 @@ $lang = array_merge($lang, array(
 	'POSTLOVE_USE_CSS_EXPLAIN'	=> 'For easier customisation of the POST LOVE extension you could stop it from loading the default CSS. If you want to use your own images, please refer to <code>overall_header_head_append.html</code>.',
 	'POSTLOVE_SHOW_LIKES'	=> 'Show number of posts this user has liked',
 	'POSTLOVE_SHOW_LIKES_EXPLAIN'	=> 'Show in  <code>viewtopic</code> the number of posts the user has liked.',
-	'POSTLOVE_SHOW_LIKED'	=> 'Show the number of liked user\'s posts',
-	'POSTLOVE_SHOW_LIKED_EXPLAIN'	=> 'Show in <code>viewtopic</code> how many of the user\'s posts have been liked by others.',
+	'POSTLOVE_SHOW_LIKED'	=> 'Show the number of liked user’s posts',
+	'POSTLOVE_SHOW_LIKED_EXPLAIN'	=> 'Show in <code>viewtopic</code> how many of the user’s posts have been liked by others.',
 
 	//Version 1.1 langs
 	'ACP_POSTLOVE_GRP'	=> 'Post Love',

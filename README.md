@@ -1,24 +1,22 @@
 [![Build Status](https://travis-ci.org/aught13/postlove.svg?branch=1.2.x)](https://travis-ci.org/aught13/postlove) [![Coverage Status](https://coveralls.io/repos/github/aught13/postlove/badge.svg?branch=1.2.x)](https://coveralls.io/github/aught13/postlove?branch=1.2.x)
 
-Post Love - Aught13 Fork for phpBB 3.2
+Post Likes for phpBB 3.2
 ==========
 
 Description:
 
-    Add "like"/love (as it uses small heart) to the posts.
-    As a popup you can see who have liked/loved the post.
+    Add "like" to the posts.
+    Displays a list so you can see who has liked the post.
 
 Features:
 
     Postview:
-        - Show small heart under every post
-        - Toggle like/love
-        - Show as tooltip who have loked the post
+        - FA Thumb below post toggles like.
+        - Shows number of and lists likers up to 5 and uses too tip for likers beyond 5.
         - Show how many posts the user liked in mini profile
         - Show ho many of the user posts have been liked in mini profile
     
     ACP:
-        - Enable/disable main CSS (CSS classes can be redefined
         - Allow showing of liked posts count in mini profile (postview)
         - Allow showing of user's posts that have been liked count in mini profile (postview)
 

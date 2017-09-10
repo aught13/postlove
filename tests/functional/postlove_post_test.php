@@ -8,7 +8,7 @@
 *
 */
 
-namespace anavaro\postlove\tests\functional;
+namespace aught13\postlove\tests\functional;
 
 /**
 * @group functional
@@ -20,7 +20,7 @@ class postlove_post_test extends postlove_base
 	{
 		include('CssParser.php');
 		$parser = new CssParser();
-		$parser->load_file('/home/travis/build/phpBB3/phpBB/ext/anavaro/postlove/styles/all/theme/default.css');
+		$parser->load_file('/home/travis/build/phpBB3/phpBB/ext/aught13/postlove/styles/all/theme/default.css');
 		$parser->parse();
 		
 		$this->login();
@@ -76,9 +76,9 @@ class postlove_post_test extends postlove_base
 		$this->login();
 		$this->admin_login();
 
-		$this->add_lang_ext('anavaro/postlove', 'info_acp_postlove');
+		$this->add_lang_ext('aught13/postlove', 'info_acp_postlove');
 
-		$crawler = self::request('GET', 'adm/index.php?i=-anavaro-postlove-acp-acp_postlove_module&mode=main&sid=' . $this->sid);
+		$crawler = self::request('GET', 'adm/index.php?i=-aught13-postlove-acp-acp_postlove_module&mode=main&sid=' . $this->sid);
 		$form = $crawler->selectButton('submit')->form();
 		$form->setValues(array(
 			'poslove[postlove_show_likes]'	=> 1,
@@ -98,9 +98,9 @@ class postlove_post_test extends postlove_base
 		$this->login();
 		$this->admin_login();
 
-		$this->add_lang_ext('anavaro/postlove', 'info_acp_postlove');
+		$this->add_lang_ext('aught13/postlove', 'info_acp_postlove');
 
-		$crawler = self::request('GET', 'adm/index.php?i=-anavaro-postlove-acp-acp_postlove_module&mode=main&sid=' . $this->sid);
+		$crawler = self::request('GET', 'adm/index.php?i=-aught13-postlove-acp-acp_postlove_module&mode=main&sid=' . $this->sid);
 		$form = $crawler->selectButton('submit')->form();
 		$form->setValues(array(
 			'poslove[postlove_show_likes]'	=> 0,
@@ -120,9 +120,9 @@ class postlove_post_test extends postlove_base
 		$this->login();
 		$this->admin_login();
 
-		$this->add_lang_ext('anavaro/postlove', 'info_acp_postlove');
+		$this->add_lang_ext('aught13/postlove', 'info_acp_postlove');
 
-		$crawler = self::request('GET', 'adm/index.php?i=-anavaro-postlove-acp-acp_postlove_module&mode=main&sid=' . $this->sid);
+		$crawler = self::request('GET', 'adm/index.php?i=-aught13-postlove-acp-acp_postlove_module&mode=main&sid=' . $this->sid);
 		$form = $crawler->selectButton('submit')->form();
 		$form->setValues(array(
 			'poslove[postlove_show_likes]'	=> 1,
@@ -143,7 +143,7 @@ class postlove_post_test extends postlove_base
 	public function test_show_list()
 	{
 		$this->login();
-		$this->add_lang_ext('anavaro/postlove', 'postlove');
+		$this->add_lang_ext('aught13/postlove', 'postlove');
 	
 		$crawler = self::request('GET', "app.php/postlove/2?sid={$this->sid}");
 		//$this->assertContains('zzazaza', $crawler->text());

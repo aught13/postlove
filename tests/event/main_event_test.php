@@ -8,7 +8,7 @@
 *
 */
 
-namespace anavaro\postlove\tests\event;
+namespace aught13\postlove\tests\event;
 
 /**
 * @group event
@@ -25,7 +25,7 @@ class main_event extends \phpbb_database_test_case
 	*/
 	static protected function setup_extensions()
 	{
-		return array('anavaro/postlove');
+		return array('aught13/postlove');
 	}
 
 	protected $db;
@@ -74,7 +74,7 @@ class main_event extends \phpbb_database_test_case
 	*/
 	protected function set_listener()
 	{
-		$this->listener = new \anavaro\postlove\event\main_listener(
+		$this->listener = new \aught13\postlove\event\main_listener(
 			$this->auth,
 			$this->config,
 			$this->db,
@@ -96,7 +96,7 @@ class main_event extends \phpbb_database_test_case
 			'core.memberlist_view_profile',
 			'core.delete_posts_after',
 			'core.delete_user_after',
-		), array_keys(\anavaro\postlove\event\main_listener::getSubscribedEvents()));
+		), array_keys(\aught13\postlove\event\main_listener::getSubscribedEvents()));
 	}
 
 	/**

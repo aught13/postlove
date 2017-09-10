@@ -7,11 +7,11 @@
 *
 */
 
-namespace anavaro\postlove\notification;
+namespace aught13\postlove\notification;
 
 /**
-*
-* @package notifications
+* Like Post Notification Manager
+* 
 */
 class postlove extends \phpbb\notification\type\base
 {
@@ -31,7 +31,7 @@ class postlove extends \phpbb\notification\type\base
 	protected $helper;
 
 	/**
-	* Notification Type Boardrules Constructor
+	* Notification Type Postlove Constructor
 	*
 	* @param \phpbb\user_loader $user_loader
 	* @param \phpbb\db\driver\driver_interface $db
@@ -47,12 +47,12 @@ class postlove extends \phpbb\notification\type\base
 	* @param string $user_notifications_table
 	* @return \phpbb\notification\type\base
 	*/
-	public function __construct(\phpbb\user_loader $user_loader, \phpbb\db\driver\driver_interface $db, \phpbb\cache\driver\driver_interface $cache, $user,\phpbb\language\language $language, \phpbb\auth\auth $auth, \phpbb\config\config $config, \phpbb\controller\helper $helper, $phpbb_root_path, $php_ext, $notification_types_table, $notifications_table, $user_notifications_table)
+	public function __construct(\phpbb\user_loader $user_loader, \phpbb\db\driver\driver_interface $db, \phpbb\cache\driver\driver_interface $cache, $users,\phpbb\language\language $language, \phpbb\auth\auth $auth, \phpbb\config\config $config, \phpbb\controller\helper $helper, $phpbb_root_path, $php_ext, $notification_types_table, $notifications_table, $user_notifications_table)
 	{
 		$this->user_loader = $user_loader;
 		$this->db = $db;
 		$this->cache = $cache;
-		$this->user = $user;
+		$this->user = $users;
 		$this->language = $language;
 		$this->auth = $auth;
 		$this->config = $config;
@@ -85,7 +85,7 @@ class postlove extends \phpbb\notification\type\base
 	public static $notification_option = array(
 		'lang'	=> 'NOTIFICATION_TYPE_POST_LOVE',
 	);
-
+	
 	/**
 	* Is this type available to the current user (defines whether or not it will be shown in the UCP Edit notification options)
 	*
@@ -97,9 +97,10 @@ class postlove extends \phpbb\notification\type\base
 	}
 
 	/**
-	* Get the id of the liker
+	* Get the id of the Liker
 	*
-	* @param array $data The data for the like
+	* @param array $notification_data The data from the post.
+	* @return id (integer) of the Liker
 	*/
 	public static function get_item_id($data)
 	{
@@ -109,17 +110,19 @@ class postlove extends \phpbb\notification\type\base
 	/**
 	* Get the id of the parent
 	*
-	* @param array $data The data for the like
+	* @param array $notification_data The data from the post.
+	* @return id (integer) of the liked post
 	*/
 	public static function get_item_parent_id($data)
 	{
+		// Return Parent
 		return (int) $data['post_id'];
 	}
 
 	/**
-	* Find the users who will receive notifications 
+	* Find the users who will receive notifications
 	*
-	* @param array $data The data for the like
+	* @param array $data The data for the updated rules
 	*
 	* @return array
 	*/
@@ -134,6 +137,8 @@ class postlove extends \phpbb\notification\type\base
 		
 		return $users;
 	}
+	
+
 	/**
 	* Users needed to query before this notification can be displayed
 	*
@@ -167,7 +172,7 @@ class postlove extends \phpbb\notification\type\base
 		return $this->language->lang('NOTIFICATION_POSTLOVE_ADD', $username);
 	}
 	/**
-	* Get the HTML formatted reference of the notification 
+	* Get the HTML formatted reference of the notification
 	*
 	* @return string
 	*/

@@ -8,7 +8,7 @@
 *
 */
 
-namespace anavaro\postlove\controller;
+namespace aught13\postlove\controller;
 
 class ajaxify
 {
@@ -24,8 +24,7 @@ class ajaxify
 	 * @param $likes_table
 	 * @internal param string $table_prefix phpBB Table Prefix
 	 */
-	public function __construct(\phpbb\config\config $config, \phpbb\db\driver\driver_interface $db, \phpbb\user $user, \anavaro\postlove\controller\notifyhelper $notifyhelper,
-								$likes_table)
+	public function __construct(\phpbb\config\config $config, \phpbb\db\driver\driver_interface $db, \phpbb\user $user, \aught13\postlove\controller\notifyhelper $notifyhelper, $likes_table)
 	{
 		$this->config = $config;
 		$this->db = $db;

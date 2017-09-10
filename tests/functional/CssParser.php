@@ -26,7 +26,7 @@
  * General purpose CSS parser
  */
  
-namespace anavaro\postlove\tests\functional;
+namespace aught13\postlove\tests\functional;
  
 class CssParser {
 

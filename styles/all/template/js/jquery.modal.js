@@ -180,7 +180,7 @@
   // Returns if there currently is an active modal
   $.modal.isActive = function () {
     return current ? true : false;
-  }
+  };
 
   $.modal.defaults = {
     overlay: "#000",
@@ -188,7 +188,7 @@
     zIndex: 1,
     escapeClose: true,
     clickClose: true,
-    closeText: 'Close',
+    closeText: '&#xf05c',
     closeClass: '',
     modalClass: "modal",
     spinnerHtml: null,
