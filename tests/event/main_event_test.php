@@ -17,6 +17,9 @@ namespace aught13\postlove\tests\event;
 class main_event extends \phpbb_database_test_case
 {
 	protected $listener;
+	/** @var \phpbb\db\tools */
+    protected $db_tools;
+
 
 	/**
 	* Define the extensions to be tested
@@ -27,8 +30,6 @@ class main_event extends \phpbb_database_test_case
 	{
 		return array('aught13/postlove');
 	}
-
-	protected $db;
 
 	/**
 	* Get data set fixtures
@@ -51,7 +52,8 @@ class main_event extends \phpbb_database_test_case
 		$this->config = new \phpbb\config\config(array());
 
 		// Setup DB
-		$this->db = $this->new_dbal();
+		$db = $this->new_dbal();
+        $this->db_tools = new \phpbb\db\tools($db);
 
 		// Setup template
 		$this->template = $this->getMockBuilder('\phpbb\template\template')

@@ -18,7 +18,12 @@ require_once dirname(__FILE__) . '/../../../../../includes/functions.php';
 require_once dirname(__FILE__) . '/../../../../../includes/functions_content.php';
 
 class controller_lovelist_test extends \phpbb_database_test_case
-{
+	{
+    /** @var \phpbb\db\tools */
+    protected $db_tools;
+
+    /** @var string */
+    protected $table_prefix;
 	/**
 	* Define the extensions to be tested
 	*
@@ -29,10 +34,6 @@ class controller_lovelist_test extends \phpbb_database_test_case
 		return array('aught13/postlove');
 	}
 
-	protected $db;
-	/**
-	* Get data set fixtures
-	*/
 	public function getDataSet()
 	{
 		return $this->createXMLDataSet(dirname(__FILE__) . '/fixtures/users.xml');
@@ -43,10 +44,12 @@ class controller_lovelist_test extends \phpbb_database_test_case
 	public function setUp()
 	{
 		global $phpbb_dispatcher;
+		global $table_prefix;
 
 		parent::setUp();
-		$this->db = $this->new_dbal();
-
+		$this->table_prefix = $table_prefix;
+        $db = $this->new_dbal();
+        $this->db_tools = new \phpbb\db\tools($db);
 		$phpbb_dispatcher = new \phpbb_mock_event_dispatcher();
 
 		$this->user = $this->getMock('\phpbb\user', array(), array(
@@ -82,8 +85,7 @@ class controller_lovelist_test extends \phpbb_database_test_case
 	}
 	public function test_install()
 	{
-		$db_tools = new \phpbb\db\tools\tools($this->db);
-		$this->assertTrue($db_tools->sql_table_exists('phpbb_posts_likes'));
+		$this->assertTrue($this->db_tools->sql_table_exists('phpbb_posts_likes'));
 	}
 
 	/**

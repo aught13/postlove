@@ -8,7 +8,7 @@
 *
 */
 
-namespace anavaro\postlove\migrations;
+namespace aught13\postlove\migrations;
 
 /**
 * Primary migration
@@ -19,7 +19,7 @@ class release_1_1_0 extends \phpbb\db\migration\migration
 	static public function depends_on()
 	{
 		return array(
-			'\anavaro\postlove\migrations\release_1_0_1',
+			'\aught13\postlove\migrations\release_1_0_1',
 		);
 	}
 
@@ -38,9 +38,9 @@ class release_1_1_0 extends \phpbb\db\migration\migration
 				'acp',
 				'ACP_POSTLOVE_GRP',
 				array(
-					'module_basename'	=> '\anavaro\postlove\acp\acp_postlove_module',
+					'module_basename'	=> '\aught13\postlove\acp\acp_postlove_module',
 					'module_mode'		=> array('main'),
-					'module_auth'        => 'ext_anavaro/postlove && acl_a_user',
+					'module_auth'        => 'ext_aught13/postlove && acl_a_user',
 				)
 			)),
 		);
