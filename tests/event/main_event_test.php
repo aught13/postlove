@@ -19,6 +19,7 @@ class main_event extends \phpbb_database_test_case
 	protected $listener;
 	/** @var \phpbb\db\tools */
     protected $db_tools;
+	protected $db;
 
 
 	/**
@@ -52,8 +53,8 @@ class main_event extends \phpbb_database_test_case
 		$this->config = new \phpbb\config\config(array());
 
 		// Setup DB
-		$db = $this->new_dbal();
-        $this->db_tools = new \phpbb\db\tools($db);
+		$this->db = $this->new_dbal();
+        $this->db_tools = new \phpbb\db\tools($this->db);
 
 		// Setup template
 		$this->template = $this->getMockBuilder('\phpbb\template\template')
@@ -79,7 +80,7 @@ class main_event extends \phpbb_database_test_case
 		$this->listener = new \aught13\postlove\event\main_listener(
 			$this->auth,
 			$this->config,
-			$this->db_tools,
+			$this->db,
 			$this->template,
 			$this->user,
 			$this->controller_helper,

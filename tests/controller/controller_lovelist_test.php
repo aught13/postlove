@@ -24,6 +24,7 @@ class controller_lovelist_test extends \phpbb_database_test_case
 
     /** @var string */
     protected $table_prefix;
+	protected $db;
 	/**
 	* Define the extensions to be tested
 	*
@@ -48,8 +49,8 @@ class controller_lovelist_test extends \phpbb_database_test_case
 
 		parent::setUp();
 		$this->table_prefix = $table_prefix;
-        $db = $this->new_dbal();
-        $this->db_tools = new \phpbb\db\tools($db);
+        $this->db = $this->new_dbal();
+        $this->db_tools = new \phpbb\db\tools($this->db);
 		$phpbb_dispatcher = new \phpbb_mock_event_dispatcher();
 
 		$this->user = $this->getMock('\phpbb\user', array(), array(
@@ -73,7 +74,7 @@ class controller_lovelist_test extends \phpbb_database_test_case
 
 		$this->auth = $this->getMock('\phpbb\auth\auth');
 
-		$this->user_loader = new \phpbb\user_loader($this->db_tools, $phpbb_root_path, $phpEx, 'phpbb_users');
+		$this->user_loader = new \phpbb\user_loader($this->db, $phpbb_root_path, $phpEx, 'phpbb_users');
 		// Mock the template
 		$this->template = $this->getMockBuilder('\phpbb\template\template')
 			->getMock();
