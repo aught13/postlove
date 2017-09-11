@@ -54,16 +54,16 @@ class postlove_post_test extends postlove_base
 	
 	public function test_guest_see_loves()
 	{
-		$crawler = self::request('GET', "viewtopic.php?t={$post2['topic_id']}&sid={$this->sid}");
-		$this->assertContains('1', $crawler->filter('#p' . $post2['post_id'])->filter('.postlove_likers')->filter('span')->attr('title'));
+		$crawler = self::request('GET', "viewtopic.php?t=1&sid={$this->sid}");
+		$this->assertContains('1', $crawler->filter('#p1')->filter('.postlove_likers')->filter('span')->attr('title'));
 	}
 	
 	public function test_guests_cannot_like()
 	{
 		$crw1 = self::request('GET', 'app.php/postlove/toggle/3', array(), array(), array('CONTENT_TYPE'	=> 'application/json'));
 		
-		$crawler = self::request('GET', "viewtopic.php?t={$post2['topic_id']}&sid={$this->sid}");
-		$this->assertContains('1', $crawler->filter('#p' . $post2['post_id'])->filter('.postlove_likers')->filter('span')->attr('title'));
+		$crawler = self::request('GET', "viewtopic.php?t=1&sid={$this->sid}");
+		$this->assertContains('1', $crawler->filter('#p1')->filter('.postlove_likers')->filter('span')->attr('title'));
 		
 	}
 	public function test_show_likes_given()
@@ -91,7 +91,7 @@ class postlove_post_test extends postlove_base
 		$this->logout();
 
 		$this->login();
-		$crawler = self::request('GET', "viewtopic.php?t=2&sid={$this->sid}");
+		$crawler = self::request('GET', "viewtopic.php?t=1&sid={$this->sid}");
 		$this->assertContains('x 1',  $crawler->filter('.post')->eq(0)->filter('.inner')->filter('.postprofile')->filter('.profile-custom-field')->filter('.liked_info')->parents()->text());
 		//error above InvalidArgumentException: The current node list is empty.
 		$this->assertEquals(0,  $crawler->filter('.post')->eq(0)->filter('.inner')->filter('.postprofile')->filter('.like_info')->count());
