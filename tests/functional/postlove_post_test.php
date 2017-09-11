@@ -36,7 +36,7 @@ class postlove_post_test extends postlove_base
 		$class = $crawler->filter('#p' . $post2['post_id'])->filter('.postlove')->filter('span')->attr('class');
 
 		$this->assertContains('heart-red-16.png', $parser->parsed['main']['.' . $class]['background']);
-		$this->assertContains('0 x', $crawler->filter('#p' . $post2['post_id'])->filter('.postlove')->text());
+		$this->assertContains('0', $crawler->filter('#p' . $post2['post_id'])->filter('.postlove_likers')->filter('span')->attr('title'));
 		
 		//toggle like
 		$url = $crawler->filter('#p' . $post2['post_id'])->filter('.postlove')->filter('a')->attr('href');
@@ -47,7 +47,7 @@ class postlove_post_test extends postlove_base
 		$class = $crawler->filter('#p' . $post2['post_id'])->filter('.postlove')->filter('span')->attr('class');
 
 		$this->assertContains('heart-white-16.png', $parser->parsed['main']['.' . $class]['background']);
-		$this->assertContains('1 x', $crawler->filter('#p' . $post2['post_id'])->filter('.postlove')->text());
+		$this->assertContains('1', $crawler->filter('#p' . $post2['post_id'])->filter('.postlove_likers')->filter('span')->attr('title'));
 		$this->logout();
 	}
 	
