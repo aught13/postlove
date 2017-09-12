@@ -58,7 +58,7 @@ class postlove_post_test extends postlove_base
 	
 	public function test_guest_see_loves()
 	{
-		$crawler = self::request('GET', "viewtopic.php?t={$this->tpic}&sid={$this->sid}");
+		$crawler = self::request('GET', "viewtopic.php?t=".$this->tpic."&sid={$this->sid}");
 		$this->assertContains('1', $crawler->filter('#p' . $this->pst)->filter('.postlove_likers')->filter('span')->attr('title'));
 	}
 	
