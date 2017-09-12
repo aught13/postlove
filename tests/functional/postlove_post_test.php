@@ -16,8 +16,8 @@ namespace aught13\postlove\tests\functional;
 class postlove_post_test extends postlove_base
 {
 	protected $post2 = array();
-	private $tpic = '0';
-	private $pst = '0';
+	private $tpic;
+	private $pst;
 	public function test_post()
 	{
 		include('CssParser.php');
@@ -33,8 +33,8 @@ class postlove_post_test extends postlove_base
 		
 		$post2 = $this->create_post(2, $post['topic_id'], 'Re: Test Topic 1', 'This is a test [b]post[/b] posted by the testing framework.');
 		$crawler = self::request('GET', "viewtopic.php?t={$post2['topic_id']}&sid={$this->sid}");
-		$tpic = $post2['topic_id'];
-		$pst = $post2['post_id'];
+		$this->tpic = $post2['topic_id'];
+		$this->pst = $post2['post_id'];
 		
 		//Do we see the static?
 		$class = $crawler->filter('#p' . $post2['post_id'])->filter('.postlove')->filter('span')->attr('class');
@@ -58,16 +58,16 @@ class postlove_post_test extends postlove_base
 	
 	public function test_guest_see_loves()
 	{
-		$crawler = self::request('GET', "viewtopic.php?t={$tpic}&sid={$this->sid}");
-		$this->assertContains('1', $crawler->filter('#p' . $pst)->filter('.postlove_likers')->filter('span')->attr('title'));
+		$crawler = self::request('GET', "viewtopic.php?t={$this->tpic}&sid={$this->sid}");
+		$this->assertContains('1', $crawler->filter('#p' . $this->pst)->filter('.postlove_likers')->filter('span')->attr('title'));
 	}
 	
 	public function test_guests_cannot_like()
 	{
 		$crw1 = self::request('GET', 'app.php/postlove/toggle/3', array(), array(), array('CONTENT_TYPE'	=> 'application/json'));
 		
-		$crawler = self::request('GET', "viewtopic.php?t={$tpic}&sid={$this->sid}");
-		$this->assertContains('1', $crawler->filter('#p' . $pst)->filter('.postlove_likers')->filter('span')->attr('title'));
+		$crawler = self::request('GET', "viewtopic.php?t={$this->tpic}&sid={$this->sid}");
+		$this->assertContains('1', $crawler->filter('#p' . $this->pst)->filter('.postlove_likers')->filter('span')->attr('title'));
 		
 	}
 	public function test_show_likes_given()
