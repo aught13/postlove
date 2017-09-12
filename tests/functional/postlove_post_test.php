@@ -50,10 +50,10 @@ class postlove_post_test extends postlove_base
 		$this->assertContains('heart-white-16.png', $parser->parsed['main']['.' . $class]['background']);
 		$this->assertContains('1', $crawler->filter('#p' . $post2['post_id'])->filter('.postlove_likers')->filter('span')->attr('title'));
 		$this->logout();
-	}
-	
-	public function test_guest_see_loves()
-	{
+	//}
+	//
+	//public function test_guest_see_loves()
+	//{
 		$crawler = self::request('GET', "viewtopic.php?t=1&sid={$this->sid}");
 		$this->assertContains('1', $crawler->filter('#p2')->filter('.postlove_likers')->filter('span')->attr('title'));
 	}
