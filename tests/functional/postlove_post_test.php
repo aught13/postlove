@@ -46,7 +46,7 @@ class postlove_post_test extends postlove_base
 		//toggle like
 		//$url = $crawler->filter('#p' . $post2['post_id'])->filter('.postlove')->filter('a')->attr('href');
 		//$crw1 = self::request('GET', substr($url, 1), array(), array(), array('CONTENT_TYPE'	=> 'application/json'));
-		$link = $crawler->filter('#p' . $post2['post_id'])->filter('.postlove')->filter('a')->eq(1)->link();
+		$link = $crawler->filter('#p' . $post2['post_id'])->filter('.postlove')->filter('a')->eq(0)->link();
 
         $crawler = self::click($link);
 		
