@@ -48,7 +48,7 @@ class postlove_post_test extends postlove_base
 		//$crw1 = self::request('GET', substr($url, 1), array(), array(), array('CONTENT_TYPE'	=> 'application/json'));
 		$link = $crawler->filter('#p' . $post2['post_id'])->filter('.postlove')->filter('a')->eq(0)->link();
 
-        $crawler = self::click($link);
+        $crawler = $client->click($link);
 		
 		//reload page and test ...
 		$crawler = self::request('GET', "viewtopic.php?t={$post2['topic_id']}&sid={$this->sid}");
