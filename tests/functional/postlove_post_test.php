@@ -44,8 +44,11 @@ class postlove_post_test extends postlove_base
 		$this->assertContains('0', $crawler->filter('#p' . $post2['post_id'])->filter('.postlove_likers')->filter('span')->attr('title'));
 		
 		//toggle like
-		$url = $crawler->filter('#p' . $post2['post_id'])->filter('.postlove')->filter('a')->attr('href');
-		$crw1 = self::request('GET', substr($url, 1), array(), array(), array('CONTENT_TYPE'	=> 'application/json'));
+		//$url = $crawler->filter('#p' . $post2['post_id'])->filter('.postlove')->filter('a')->attr('href');
+		//$crw1 = self::request('GET', substr($url, 1), array(), array(), array('CONTENT_TYPE'	=> 'application/json'));
+		$link = $crawler->filter('#p' . $post2['post_id'])->filter('.postlove')->filter('a')->eq(1)->link();
+
+        $crawler = self::click($link);
 		
 		//reload page and test ...
 		$crawler = self::request('GET', "viewtopic.php?t={$post2['topic_id']}&sid={$this->sid}");
@@ -59,7 +62,7 @@ class postlove_post_test extends postlove_base
 	public function test_guest_see_loves()
 	{
 		$crawler = self::request('GET', "viewtopic.php?f=2&t=2");
-		$this->assertContains('1', $crawler->filter('#p4')->filter('.postlove_likers')->filter('span')->attr('title'));
+		$this->assertContains('1', $crawler->filter('#p1')->filter('.postlove_likers')->filter('span')->attr('title'));
 	}
 	
 	public function test_guests_cannot_like()
@@ -67,7 +70,7 @@ class postlove_post_test extends postlove_base
 		$crw1 = self::request('GET', 'app.php/postlove/toggle/3', array(), array(), array('CONTENT_TYPE'	=> 'application/json'));
 		
 		$crawler = self::request('GET', "viewtopic.php?f=2&t=2");
-		$this->assertContains('1', $crawler->filter('#p4' . $this->pst)->filter('.postlove_likers')->filter('span')->attr('title'));
+		$this->assertContains('1', $crawler->filter('#p1' . $this->pst)->filter('.postlove_likers')->filter('span')->attr('title'));
 		
 	}
 	public function test_show_likes_given()
