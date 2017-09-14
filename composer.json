@@ -25,7 +25,8 @@
 	},
 	"require-dev": {
 		"phpbb/epv": "dev-master",
-		"satooshi/php-coveralls": "~1.0"
+		"php-coveralls/php-coveralls": "dev-master",
+                "phpunit/phpcov": "^2.0"
 	},
 	"extra": {
 		"display-name": "phpBB 3.2 Post Likes",
