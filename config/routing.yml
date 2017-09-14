@@ -1,16 +1,16 @@
-postlove_control:
+aught13_postlove_postlove_control:
     path: /postlove/{action}/{post}
     defaults: { _controller: aught13.postlove.ajaxify:base }
     requirements:
         post: \d+
 
-postlove_list:
+aught13_postlove_postlove_list:
     path: /postlove/{user_id}
     defaults: { _controller: aught13.postlove.lovelist:base, page: 1 }
     requirements:
         user_id: \d+
 
-postlove_list_page:
+aught13_postlove_postlove_list_page:
     path: /postlove/{user_id}/page/{page}
     defaults: { _controller: aught13.postlove.lovelist:base }
     requirements:

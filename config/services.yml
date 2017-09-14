@@ -46,7 +46,7 @@ services:
             - @service_container
             - %core.root_path%
             - %core.php_ext%
-    notification.type.postlove:
+    aught13.postlove.notification.type.postlove:
         class: aught13\postlove\notification\postlove
         shared : false # shared MUST be false for this to work!
         arguments:
