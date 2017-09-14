@@ -47,7 +47,7 @@ class postlove extends \phpbb\notification\type\base
 	* @param string $user_notifications_table
 	* @return \phpbb\notification\type\base
 	*/
-	public function __construct(\phpbb\user_loader $user_loader , \phpbb\db\driver\driver_interface $db , \phpbb\cache\driver\driver_interface $cache , $users , \phpbb\language\language $language , \phpbb\auth\auth $auth , \phpbb\config\config $config , \phpbb\controller\helper $helper , $phpbb_root_path , $php_ext , $notification_types_table , $notifications_table , $user_notifications_table)
+	public function __construct(\phpbb\user_loader $user_loader, \phpbb\db\driver\driver_interface $db, \phpbb\cache\driver\driver_interface $cache, $users, \phpbb\language\language $language, \phpbb\auth\auth $auth, \phpbb\config\config $config, \phpbb\controller\helper $helper, $phpbb_root_path, $php_ext, $notification_types_table, $notifications_table, $user_notifications_table)
 	{
 		$this->user_loader = $user_loader;
 		$this->db = $db;
