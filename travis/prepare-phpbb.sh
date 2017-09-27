@@ -8,6 +8,9 @@
 # For full copyright and license information, please see
 # the docs/CREDITS.txt file.
 #
+require 'coveralls'
+Coveralls.wear!
+
 set -e
 set -x
 
