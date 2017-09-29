@@ -33,8 +33,6 @@ class postlove_post_test extends postlove_base
 		
 		$post2 = $this->create_post(2, $post['topic_id'], 'Re: Test Topic 1', 'This is a test [b]post[/b] posted by the testing framework.');
 		$crawler = self::request('GET', "viewtopic.php?t={$post2['topic_id']}&sid={$this->sid}");
-		$this->tpic = $post2['topic_id'];
-		$this->pst = $post2['post_id'];
 		
 		//Do we see the static?
 		$class = $crawler->filter('#p' . $post2['post_id'])->filter('.postlove')->filter('span')->attr('class');
